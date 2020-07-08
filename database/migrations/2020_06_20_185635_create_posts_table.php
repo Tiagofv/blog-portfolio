@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('title'); //used for SEO
             $table->text('description'); // Used for SEO
             $table->text('categories'); // Used for SEO
-            $table->boolean('published');
+            $table->boolean('published'); //display or not
             $table->timestamps();
         });
     }
