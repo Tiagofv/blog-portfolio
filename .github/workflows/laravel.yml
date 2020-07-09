@@ -57,7 +57,7 @@ jobs:
       - name: Restart Docker containers
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: cd {{secrets.DIRECTORY}} && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+          command: cd {{secrets.DIRECTORY}} && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate
           host: ${{ secrets.IP }}
           username: ${{ secrets.USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
