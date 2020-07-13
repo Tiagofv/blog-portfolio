@@ -3,7 +3,7 @@
 'action' => ''
 ])
 
-<form action="{{$action}}" method="{{$method === 'GET' ? 'GET' : 'POST'}}">
+<form action="{{$action}}" method="{{$method === 'GET' ? 'GET' : 'POST'}}" {{$attributes}}>
     @csrf
     {{-- if the method is not get or post --}}
     @if (!in_array($method, ['GET', 'POST']))

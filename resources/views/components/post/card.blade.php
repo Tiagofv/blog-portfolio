@@ -5,13 +5,17 @@
     'created_at' => '',
     'published' => false,
     'id' => 1,
-    'categories' => 'Categorias'
+    'categories' => 'Tecnologia',
+    'slug' => 'sluggy'
 ])
 
 <div class=" w-full md:w-full lg:max-w-full lg:flex
 transition duration-500 ease-in-out bg-blue-500 hover:bg-gray-300 transform hover:-translate-y-1 hover:scale-60
 cursor-pointer
-">
+"
+     x-data="data{{$id}}()"
+     x-init="$watch('published', value => submit('{{$id}}-form'))"
+>
     <div class="w-full shadow-lg bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div class="mb-8">
             <p class="text-sm text-gray-600 flex items-center">
@@ -19,16 +23,21 @@ cursor-pointer
             </p>
             @auth
             <div class="float-right">
-                <x-form  method="PUT" action="{{route('post.update', $id)}}">
-                    <x-toggle name="published" label="Publicado" :value="$published" iteration="{{$id}}"></x-toggle>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="Submit">
-                        Alterar
-                    </button>
+                <x-form  method="PUT" action="{{route('post.update', $slug)}}" id="{{$id}}-form">
+
+                        <x-toggle name="published"
+                                  label="Publicado"
+                                  :value="$published"
+                                  iteration="{{$id}}"
+                                  @click="submit"
+                        >
+                        </x-toggle>
+
                 </x-form>
             </div>
             @endauth
             <div class="text-gray-900 font-bold text-xl mb-2">{{$title}}</div>
-            <p class="text-gray-700 text-base">{{\Illuminate\Support\Str::limit($slot, 120, '...')}}</p>
+            <p class="text-gray-700 text-base">{!! \Illuminate\Support\Str::limit($slot, 120, '...') !!}</p>
         </div>
         {{$created_at}}
         <div class="flex items-center">
@@ -40,3 +49,16 @@ cursor-pointer
         </div>
     </div>
 </div>
+<script>
+    function data{{$id}}(){
+        return {
+            published: @json($published),
+            submit(val){
+                console.log(this.formId, val)
+                let x = document.getElementById(this.formId ).submit()
+                console.log(x)
+            },
+            formId: @json($id.'-form')
+        }
+    }
+</script>

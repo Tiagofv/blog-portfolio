@@ -25,7 +25,7 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);height: 100vh
                 <img src="{{asset('/images/animat-lightbulb-color.gif')}}" alt="">
             </div>
             <div class="">
-                <img src="{{asset('/images/animat-rocket-color.gif')}}" alt="">
+{{--                <img src="{{asset('/images/animat-rocket-color.gif')}}" alt="">--}}
             </div>
         </div>
     </div>

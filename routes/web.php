@@ -19,9 +19,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/blog', 'PostController@index')->name('blog');
-
+Route::resource('contact', 'ContactController');
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'PostController@index')->name('home');
 
-    Route::resource('post', 'PostController');
 });
+Route::resource('post', 'PostController');

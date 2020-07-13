@@ -8,7 +8,10 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show', 'index']);
+    }
 
     /**
      * Display a listing of the resource.
@@ -55,10 +58,13 @@ class PostController extends Controller
            'description' => 'required|max:255',
            'content' => 'required',
            'categories' => 'required',
+            'slug' => 'unique:posts|required'
         ]);
 
-        $request->merge(['author' => auth()->user()->id, 'slug' => Str::slug($request->title), 'published' => $request->has('published') ? $request->published : false]);
-        Post::create($request->all());
+        $request->merge([
+            'published' => $request->has('published') ? $request->published : false
+        ]);
+        auth()->user()->posts()->create($request->all());
 
         return redirect('home')->withSuccess('Post criado com sucesso.');
     }
@@ -69,10 +75,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post, $id)
+    public function show(Post $post)
     {
         //
-        return view('post.create', ['post' => Post::find($id)]);
+        return view('post.show', ['post' => $post]);
     }
 
     /**
@@ -81,10 +87,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit(Post $post)
     {
         //
-        return view('post.create', ['post' => Post::find($id)]);
+        return view('post.create', ['post' => $post]);
     }
 
     /**
@@ -94,21 +100,14 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $postId)
+    public function update(Post $post)
     {
         //
-        $request->validate([
-            'title' => 'max:255|nullable',
-            'description' => 'max:255|nullable',
-            'content' => 'nullable',
-            'published' => 'boolean|nullable',
-            'categories' => 'string|max:255',
+        $this->validatePost(\request()->all());
+        \request()->merge([
+            'published' => \request()->has('published') ? \request()->published : false
         ]);
-        $post = Post::find($postId);
-        $request->merge([
-            'published' => $request->has('published') ? $request->published : false
-        ]);
-        $post->update($request->all());
+        $post->update(\request()->all());
         return  redirect('home')->withSuccess('Artigo editado com sucesso.');
     }
 
@@ -121,5 +120,16 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    protected function validatePost()
+    {
+        return request()->validate([
+            'title' => 'max:255|nullable',
+            'description' => 'max:255|nullable',
+            'content' => 'nullable',
+            'published' => 'boolean|nullable',
+            'categories' => 'string|max:255',
+        ]);
     }
 }

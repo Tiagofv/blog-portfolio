@@ -13,5 +13,7 @@ class Post extends Model
     public function author(){
         return $this->belongsTo('App\User', 'author', 'id');
     }
-
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }

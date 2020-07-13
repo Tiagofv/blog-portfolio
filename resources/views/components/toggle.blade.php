@@ -14,7 +14,8 @@
         <!-- toggle -->
         <div class="relative">
             <!-- input -->
-            <input id="{{$iteration}}" type="checkbox" class="hidden" name="{{$name}}" {{$value ? 'checked' : ''}} value="1" />
+            <input id="{{$iteration}}" {{$attributes}} type="checkbox" class="hidden" name="{{$name}}"
+                   {{$value ? 'checked' : ''}} value="1" />
 {{--            <input  type="hidden"  name="{{$name}}" value="0"  />--}}
             <!-- line -->
             <div
