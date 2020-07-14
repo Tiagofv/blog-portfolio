@@ -1,6 +1,6 @@
 <x-blog>
 
-    <div class="w-full md:w-1/2 my-auto mx-auto" style="min-height: 60vh;">
+    <div class="w-full md:w-2/3 my-auto mx-auto" style="min-height: 60vh;">
         <div class="pa-4 md:mx-10 mx-4" >
             <div>
                 <h5 class="text-3xl md:text-4xl">{{$post->title}}</h5>

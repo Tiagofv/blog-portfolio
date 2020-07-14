@@ -26,6 +26,7 @@
             font-family: 'Open Sans', sans-serif;
         }
     </style>
+    @laravelPWA
 </head>
 <body >
 <x-navbar></x-navbar>

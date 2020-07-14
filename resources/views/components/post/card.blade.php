@@ -10,13 +10,13 @@
 ])
 
 <div class=" w-full md:w-full lg:max-w-full lg:flex
-transition duration-500 ease-in-out bg-blue-500 hover:bg-gray-300 transform hover:-translate-y-1 hover:scale-60
+transition duration-500 ease-in-out bg-gray-500 hover:bg-gray-900 transform hover:-translate-y-1 hover:scale-60
 cursor-pointer
 "
      x-data="data{{$id}}()"
      x-init="$watch('published', value => submit('{{$id}}-form'))"
 >
-    <div class="w-full shadow-lg bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="w-full shadow-lg bg-gray-100 hover:bg-gray-200 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div class="mb-8">
             <p class="text-sm text-gray-600 flex items-center">
                 {{$categories}}

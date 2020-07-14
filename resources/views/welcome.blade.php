@@ -148,6 +148,7 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);height: 100vh
             <div class="">
                 <img src="{{asset('images/port_3.png')}}" alt="">
             </div>
+            <x-projects.list></x-projects.list>
         </div>
         <div class="w-100 text-center mb-8">
             <button class="bg-teal-500 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider text-white">Ver mais</button>
