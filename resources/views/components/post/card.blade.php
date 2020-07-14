@@ -37,7 +37,7 @@ cursor-pointer
             </div>
             @endauth
             <div class="text-gray-900 font-bold text-xl mb-2">{{$title}}</div>
-            <p class="text-gray-700 text-base">{!! \Illuminate\Support\Str::limit($slot, 120, '...') !!}</p>
+            <p class="text-gray-700">{!! \Illuminate\Support\Str::limit($slot, 120, '...') !!}</p>
         </div>
         {{$created_at}}
         <div class="flex items-center">

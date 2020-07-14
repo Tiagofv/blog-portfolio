@@ -2,7 +2,7 @@
     'posts' => []
 ])
 @forelse($posts as $post)
-{{--    <a class="m-5" href="{{route('post.show', $post->slug)}}">--}}
+    <a class="m-5" href="{{route('post.show', $post->slug)}}">
         <x-post.card author="{{$post->author()->first()->name}}"
                      content="{{$post->content}}"
                      created_at="{{$post->created_at}}"
@@ -14,7 +14,7 @@
         >
             {!!  $post->content !!}
         </x-post.card>
-{{--    </a>--}}
+    </a>
 
 @empty
     <x-common.empty></x-common.empty>
