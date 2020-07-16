@@ -8,7 +8,7 @@
                     <a href="{{route('post.edit', $post->slug)}}">Editar</a>
                 @endauth
             </div>
-            <div class="leading-relaxed">
+            <div class="leading-relaxed w-full">
                 {!! $post->content ?? '' !!}
             </div>
             <script src="https://utteranc.es/client.js"
@@ -25,5 +25,11 @@
 <style>
     p {
         margin: 0 0 1rem;
+    }
+    pre {
+        background-color: 	rgb(211,211,211);
+        border-radius: 10px;
+        padding: 1em;
+        overflow-y: auto;
     }
 </style>

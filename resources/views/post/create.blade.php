@@ -13,11 +13,15 @@
             <x-input name="slug" label="Slug" placeholder="Slug-do-post" value="{{$post->slug ?? ''}}" x-model="slug"></x-input>
             <x-input name="description" label="Descrição" placeholder="Descrição" value="{{$post->description ?? ''}}"></x-input>
             <x-input name="categories" label="Categorias" placeholder="Categorias" value="{{$post->categories ?? ''}}"></x-input>
-            <textarea name="content" placeholder="Conteúdo" value="{{$post->content ?? ''}}" x-model="content" >
+            <textarea name="content" placeholder="Conteúdo" x-model="content" rows="30" >
                 Welcome to TinyMCE!-
               </textarea>
             <div class=" mt-4">
                 <x-toggle name="published" label="Mostrar post" />
+            </div>
+            <h5 class="text-5xl">Preview</h5>
+            <div x-html="content">
+
             </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
                 {{isset($post) ? 'Editar' : 'Criar'}}
@@ -41,7 +45,7 @@
                     selector: 'textarea',
                     plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed ' +
                         'permanentpen powerpaste table advtable tinycomments tinymcespellchecker image codesample',
-                    toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table image codesample',
+                    toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table image codesample numlist bullist',
                     toolbar_mode: 'floating',
                     tinycomments_mode: 'embedded',
                     tinycomments_author: 'Author name',
