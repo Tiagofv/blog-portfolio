@@ -1,5 +1,5 @@
 {{--CONTACT--}}
-<div class="py-20" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
+<div class="py-20 mt-4" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
 >
     <div class="container mx-auto px-6"  x-data="{ open: false }">
         <h2 class="text-4xl font-bold mb-2 text-white">

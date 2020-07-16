@@ -17,12 +17,9 @@
                 Welcome to TinyMCE!-
               </textarea>
             <div class=" mt-4">
-                <x-toggle name="published" label="Mostrar post" />
+                <x-toggle name="published" label="Mostrar post" value="{{$post->published ?? false}}"/>
             </div>
-            <h5 class="text-5xl">Preview</h5>
-            <div x-html="content">
 
-            </div>
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
                 {{isset($post) ? 'Editar' : 'Criar'}}
             </button>
