@@ -22,6 +22,13 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        \Illuminate\Support\Facades\DB::table('users')->insert([
+           'email' => env('MASTER_EMAIL', ''),
+            'name' => 'Tiago Braga',
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'password' => bcrypt(env('MASTER_PASSWORD', 'password123')),
+
+        ]);
     }
 
     /**

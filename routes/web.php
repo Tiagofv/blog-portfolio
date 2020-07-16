@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-Auth::routes();
+//Auth
+Auth::routes(['register' => false]);
 
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::resource('contact', 'ContactController');

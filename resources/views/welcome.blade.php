@@ -138,7 +138,8 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);height: 100vh
                 DataScience
             </x-badge>
         </div>
-        <div class="grid md:grid-cols-3  sm:grid-cols-1 cols gap-4 mb-8">
+        <div x-data="{ openProject: false }">
+        <div class="grid md:grid-cols-3  sm:grid-cols-1 cols gap-4 mb-8"  >
             <div class="">
                 <img src="{{asset('images/port_1.png')}}" alt="">
             </div>
@@ -148,10 +149,18 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);height: 100vh
             <div class="">
                 <img src="{{asset('images/port_3.png')}}" alt="">
             </div>
-            <x-projects.list></x-projects.list>
+            <template x-if="openProject">
+                <x-projects.list x-show="openProject" class=""></x-projects.list>
+
+            </template>
         </div>
-        <div class="w-100 text-center mb-8">
-            <button class="bg-teal-500 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider text-white">Ver mais</button>
+            <div class="w-100 text-center mb-8">
+                <button
+                    x-show="!openProject"
+                    @click="openProject = true"
+                    class="bg-teal-500 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider text-white">Ver mais</button>
+            </div>
+
         </div>
     </div>
     {{--ENDPROJECTS--}}
