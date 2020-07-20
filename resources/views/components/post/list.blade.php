@@ -3,8 +3,7 @@
 ])
 @forelse($posts as $post)
     <a class="m-5" href="{{route('post.show', $post->slug)}}">
-        <x-post.card author="{{$post->author()->first()->name}}"
-                     content="{{$post->content}}"
+        <x-post.card author="{{$post->creator->name}}"
                      created_at="{{$post->created_at}}"
                      slug="{{$post->slug}}"
                      id="{{$post->id}}"
@@ -12,7 +11,7 @@
                      title="{{$post->title}}"
                      categories="{{$post->categories}}"
         >
-            {!!  $post->content !!}
+            {!!  $post->description !!}
         </x-post.card>
     </a>
 
@@ -22,3 +21,4 @@
 <div class="my-4 ">
     {{$posts->links()}}
 </div>
++'

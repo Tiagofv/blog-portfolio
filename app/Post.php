@@ -10,7 +10,7 @@ class Post extends Model
     protected $guarded = ['id'];
 
     protected  $casts = ['published' => 'boolean'];
-    public function author(){
+    public function creator(){
         return $this->belongsTo('App\User', 'author', 'id');
     }
     public function getRouteKeyName(){

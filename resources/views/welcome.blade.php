@@ -141,13 +141,21 @@ background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);height: 100vh
         <div x-data="{ openProject: false }">
         <div class="grid md:grid-cols-3  sm:grid-cols-1 cols gap-4 mb-8"  >
             <div class="">
-                <img src="{{asset('images/port_1.png')}}" alt="">
+                <a href="https://app.volare-eng.com.br/" target="_blank" class="transition hover:ease-in duration-500">
+                    <img src="{{asset('images/port_1.png')}}" alt="" class="">
+
+                </a>
             </div>
             <div class="">
-                <img src="{{asset('images/port_2.png')}}" alt="">
+                <a href="https://www.cervejariaphare.com.br/pt-br/" target="_blank">
+                    <img src="{{asset('images/port_2.png')}}" alt="">
+                </a>
             </div>
             <div class="">
-                <img src="{{asset('images/port_3.png')}}" alt="">
+                <a href="https://adm.capixabalug.com.br/" target="_blank">
+                    <img src="{{asset('images/port_3.png')}}" alt="">
+
+                </a>
             </div>
             <template x-if="openProject">
                 <x-projects.list x-show="openProject" class=""></x-projects.list>

@@ -21,21 +21,7 @@ cursor-pointer
             <p class="text-sm text-gray-600 flex items-center">
                 {{$categories}}
             </p>
-            @auth
-            <div class="float-right">
-                <x-form  method="PUT" action="{{route('post.update', $slug)}}" id="{{$id}}-form">
 
-                        <x-toggle name="published"
-                                  label="Publicado"
-                                  :value="$published"
-                                  iteration="{{$id}}"
-                                  @click="submit"
-                        >
-                        </x-toggle>
-
-                </x-form>
-            </div>
-            @endauth
             <div class="text-gray-900 font-bold text-xl mb-2">{{$title}}</div>
             <p class="text-gray-700">{!! \Illuminate\Support\Str::limit($slot, 120, '...') !!}</p>
         </div>

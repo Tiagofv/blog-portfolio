@@ -21,12 +21,15 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::with('author')
+        $posts = Post::query()
+            ->select('id', 'author', 'slug', 'title', 'description',
+            'categories', 'published')
+            ->with('creator:id,name')
             ->when(auth()->user() === null, function ($query){
                 return $query->where('published', true);
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(10);
         if(auth()->user()){
             return view('post.index', ['posts' => $posts]);
         }
